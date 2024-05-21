@@ -907,16 +907,19 @@
 
 <body class="font-sans antialiased">
     <div class="bg-gray-50 text-black/50">
-        <h1>Welcome to Turfzz. Register or log in to your account to continue: </h1>
+        @guest
+            <h1>Welcome to Turfzz. Register or log in to your account to continue: </h1>
+        @endguest
+
         <div class="relative min-h-screen flex flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
             <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
+                <header class="grid items-center grid-cols-2 gap-2 py-10 lg:grid-cols-3">
 
                     @if (Route::has('login'))
-                        <nav class="-mx-3 flex flex-1">
+                        <nav class="flex flex-1 -mx-3">
                             @auth
                                 <a href="{{ url('/dashboard') }}"
-                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]  "
+                                    class="rounded-md px-3 mx-1 py-2 btn btn-success  text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] border-solid border-black  "
                                     role="button">
                                     Dashboard
                                 </a>
