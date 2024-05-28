@@ -8,6 +8,7 @@ class LockController extends Controller
 {
     public function lock()
     {
+        auth()->logout();
         return view('lockscreen');
     }
 }
