@@ -18,4 +18,9 @@ Route::middleware([
 });
 
 Route::get('/lock', [LockController::class, 'lock'])->name('lock');
+Route::post('/lock', [LockController::class, 'lock']);
 Route::post('/logoff', [LogoffController::class, 'logout'])->name('logoff');
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

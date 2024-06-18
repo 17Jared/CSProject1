@@ -1,8 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+        <a class="btn btn-lg " href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
+
+
+        <a class="btn btn-primary ml-2 " href="{{ route('dashboard') }}">Home</a>
     </x-slot>
 
     <div>

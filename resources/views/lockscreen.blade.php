@@ -4,7 +4,7 @@
     <div class="my-5 row align-items-center">
         <div class="col-2 col-md-3 col-lg-4"></div>
         <div class="rounded col-8 col-md-6 col-lg-4 justify-content-center">
-            <form method="POST" action="{{ route('lock') }}">
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <h4>Screen locked, log in to continue</h4>
