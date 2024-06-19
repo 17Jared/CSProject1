@@ -10,7 +10,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
+<body
+    style=" background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgb(0, 0, 0)); font-family:'COMIC SANS MS' ;">
 
     @yield('content')
 

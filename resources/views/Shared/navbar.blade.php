@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark my-1">
+<nav class="my-1 navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Turfzz <span
             class="badge position-absolute start-20 top-10 translate-middle rounded-pill ">KE</span> </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -7,7 +7,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="mr-auto navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('home') }}">Home</span></a>
             </li>
