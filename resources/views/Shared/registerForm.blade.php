@@ -36,20 +36,8 @@
                     {{ $message }}
                 @enderror
             </div>
-            <label for="role" style="color:bisque " class="mt-2">Are you an:</label><br>
-            <div class="text-warning">
-                @error('role')
-                    {{ $message }}
-                @enderror
-            </div>
-            <input type="radio" class="form-check-input bg-dark my-1 mx-2" name="role" id="owner"
-                value="owner" style="color:bisque" placeholder="">
 
-            arena service provider</input><br>
-            <input type="radio" class="form-check-input bg-dark my-1 mx-2" name="role" id="customer"
-                value="customer" style="color:bisque">
 
-            arena service user/client</input><br>
             <div class="text-center border-top mt-2"><button type="submit"
                     class="btn bg-transparent btn-outline-secondary my-2 bg-dark  text-center  ">Register</button>
             </div>

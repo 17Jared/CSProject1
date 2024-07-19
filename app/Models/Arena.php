@@ -12,4 +12,8 @@ class Arena extends Model
     {
         $this->belongsTo(User::class, 'user_id');
     }
+    function Reservation()
+    {
+        return $this->hasMany(Reservation::class, 'arena_id');
+    }
 }

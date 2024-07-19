@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\RequestGuard\logout;
+
 use Illuminate\Http\Request;
 
 class LockController extends Controller

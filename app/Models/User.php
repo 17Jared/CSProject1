@@ -27,7 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'role_id',
+
         'name',
         'email',
         'password',
@@ -39,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $hidden = [
-        'role_id',
+
         'password',
         'remember_token',
         'two_factor_recovery_codes',
@@ -67,10 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
-    function Role()
-    {
-        $this->belongsTo(Role::class, 'role_id');
-    }
+
     function Arena()
     {
         $this->hasMany(Arena::class, 'user_id');

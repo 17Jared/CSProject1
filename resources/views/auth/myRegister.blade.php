@@ -29,23 +29,7 @@
                     <input id="password_confirmation" class="form-control" type="password" name="password_confirmation"
                         required autocomplete="current-password" />
                 </div>
-                <div class="mt-4">
-                    <label for="role">
-                        Are you an:
-                    </label>
-                    <x-label>
-                        <x-input id="role" name="role" class="block  mt-1 form-check-input" type=" radio"
-                            value="1" required />
-                        Arena service provider
-                    </x-label>
-                </div>
-                <div class="mt-4">
-                    <x-label>
-                        <x-input id="role" name="role" class="block  mt-1 form-check-input" type=" radio"
-                            value="2" required />
-                        Arena service user
-                    </x-label>
-                </div>
+
 
                 <div class="mt-2 mx-auto">
                     <x-button class=" btn btn-sm btn-primary mt-3 ">

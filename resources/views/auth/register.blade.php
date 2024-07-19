@@ -1,4 +1,4 @@
-@extends('myLayout')
+@extends('SHared.layout')
 
 @section('content')
     <div class="row align-items-center my-5">
@@ -10,16 +10,16 @@
                 <h4>Create an account to continue</h4>
                 <div>
                     <label for="name">Name</label>
-                    <input id="name" class="form-control" type="text" name="name" required autofocus
-                        autocomplete="username" />
+                    <input id="name" class="form-control bg-dark" style="color:bisque;" type="text" name="name"
+                        required autofocus autocomplete="username" />
                     @error('name')
                         {{ $message }}
                     @enderror
                 </div>
                 <div class="mt-2">
                     <label for="email">Email</label>
-                    <input id="email" class="form-control" type="email" name="email" required autofocus
-                        autocomplete="username" />
+                    <input id="email" class="form-control bg-dark" style="color:bisque;" type="email" name="email"
+                        required autofocus autocomplete="username" />
                     @error('email')
                         {{ $message }}
                     @enderror
@@ -27,8 +27,8 @@
 
                 <div class="mt-2">
                     <label class="form-label" for="password" value="{{ __('Password') }}">Password</label><br>
-                    <input id="password" class="form-control" type="password" name="password" required
-                        autocomplete="current-password" />
+                    <input id="password" class="form-control bg-dark" style="color:bisque;" type="password" name="password"
+                        required autocomplete="current-password" />
                     @error('password')
                         {{ $message }}
                     @enderror
@@ -36,34 +36,20 @@
                 <div class="mt-2">
                     <label class="form-label" for="password_confirmation" value="{{ __('Password') }}">Confirm
                         password</label><br>
-                    <input id="password_confirmation" class="form-control" type="password" name="password_confirmation"
-                        required autocomplete="current-password" />
+                    <input id="password_confirmation" class="form-control bg-dark" style="color:bisque;" type="password"
+                        name="password_confirmation" required autocomplete="current-password" />
                     @error('password_confirmation')
                         {{ $message }}
                     @enderror
                 </div>
-                <div class="mt-2 mb-2">
-                    <label for="role">
-                        Are you an: <br>
-                    </label>
-                </div>
-                <x-label>
-                    <x-input id="role" name="role" class="block  mt-1 form-check-input" type=" radio"
-                        value="1" required />
-                    Arena service provider
-                </x-label>
 
-                <x-label>
-                    <x-input id="role" name="role" class="block  mt-1 form-check-input" type=" radio"
-                        value="2" required />
-                    Arena service user
-                </x-label>
+
 
                 @error('role')
                     {{ $message }}
                 @enderror
-                <div class="mt-2 mx-auto">
-                    <x-button class=" btn btn-sm btn-primary mt-3 ">
+                <div class="mt-2 mx-auto text-center">
+                    <x-button class=" mt-1 rounded btn btn-outline-dark  " style="color:bisque;">
                         {{ __('Register') }}
                     </x-button>
                 </div>

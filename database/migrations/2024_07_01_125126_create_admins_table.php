@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-
             $table->foreignId('arena_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->date('date');
-            $table->time('timeIn');
-            $table->time('timeOut');
-            $table->string('status')->nullable();
+
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('admins');
     }
 };

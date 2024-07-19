@@ -1,4 +1,4 @@
-@extends('myLayout')
+@extends('Shared.layout')
 
 @section('content')
     <div class="row align-items-center my-5">
@@ -10,8 +10,8 @@
 
                 <div>
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" class="form-control" type="email" name="email" :value="old('email')" required
-                        autofocus autocomplete="username" />
+                    <input id="email" class="form-control bg-dark" style="color:bisque;" type="email" name="email"
+                        :value="old('email')" required autofocus autocomplete="username" />
                     @error('email')
                         {{ $message }}
                     @enderror
@@ -19,14 +19,14 @@
 
                 <div class="mt-4">
                     <label class="form-label" for="password" value="{{ __('Password') }}">Password</label><br>
-                    <input id="password" class="form-control" type="password" name="password" required
-                        autocomplete="current-password" />
+                    <input id="password" class="form-control bg-dark" style="color:bisque;" type="password" name="password"
+                        required autocomplete="current-password" />
                     @error('password')
                         {{ $message }}
                     @enderror
                 </div>
-                <div class="mt-2 mx-auto">
-                    <x-button class=" btn btn-sm btn-primary mt-3 ">
+                <div class="mt-2 mx-auto text-center" style="color:bisque;">
+                    <x-button class=" mt-1 rounded btn btn-outline-dark  text-center " style="color:bisque;">
                         {{ __('Log in') }}
                     </x-button>
                 </div>

@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservation extends Model
+class Admin extends Model
 {
     use HasFactory;
     function User()
     {
-        $this->belongsTo(User::class, 'user_id', 'user_id');
+        $this->belongsTo(User::class, 'user_id');
     }
     function Arena()
     {
-        $this->belongsTo(Arena::class);
+        $this->has(Arena::class, 'arena_id');
     }
 }
