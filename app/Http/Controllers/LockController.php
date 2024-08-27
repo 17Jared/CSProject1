@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Auth\RequestGuard\logout;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
 class LockController extends Controller
 {
-    public function lock()
+    public function lock($userId)
     {
-        auth()->logout();
-        return view('lockscreen');
+        $userEmail = User::where('id', $userId)->get();
+        foreach ($userEmail as $email) {
+            auth()->logout();
+            return view('lockscreen', ['email' => $email->email]);
+        }
     }
 }

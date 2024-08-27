@@ -7,20 +7,13 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <h4>Screen locked, log in to continue</h4>
-                <div>
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" class="form-control bg-dark" style="color:bisque;" type="email" name="email"
-                        :value="old('email')" required autofocus autocomplete="username" />
-                    @error('email')
-                        {{ $message }}
-                    @enderror
-                </div>
+                <h4>Screen locked, enter account password to continue</h4>
+
 
                 <div class="mt-4">
                     <label class="form-label" for="password" value="{{ __('Password') }}">Password</label><br>
                     <input id="password" class="form-control bg-dark" style="color:bisque;" type="password" name="password"
-                        required autocomplete="current-password" />
+                        required autofocus />
                     @error('password')
                         {{ $message }}
                     @enderror
@@ -30,8 +23,8 @@
 
                         {{ __('Log in') }}
                     </x-button>
-                </div>
 
+                </div>
                 <div class="flex items-center mt-4 justify-content-center form-text">
                     @if (Route::has('password.request'))
                         <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -42,6 +35,18 @@
 
 
                 </div>
+                <div style="visibility: hidden">
+
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" class="form-control bg-dark" readonly style="color:bisque;" type="email"
+                        name="email" value={{ $email }} placeholder={{ $email }} required />
+                    @error('email')
+                        {{ $message }}
+                    @enderror
+                </div>
+
+
+
             </form>
         </div>
         <div class="col-2 col-md-3 col-lg-4"></div>

@@ -16,9 +16,13 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('lock') }}" :active="request() - > routeIs('')" class="nav-link">
-                        {{ __('Lock screen') }}
-                    </a>
+                    <?php
+                    $userId = auth()->user()->id;
+                    ?>
+                    <form method="POST" action="{{ route('lock', $userId) }}">
+                        @csrf
+                        <button class="nav-link" type='submit'>Lock screen</button>
+                    </form>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('addArena') }}" :active="request() - > routeIs('')" class="nav-link">
@@ -63,6 +67,9 @@
 
 
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('myBookings') }}" class="nav-link">My bookings</a>
                 </li>
                 <li class="nav-item ">
                     <p class="nav-link" style="color: rgb(255, 145, 0)">

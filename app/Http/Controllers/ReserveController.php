@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\acceptedMail;
+use App\Mail\cancelMail;
+use App\Mail\cancelMain;
 use App\Mail\rejectedMail;
+use App\Mail\rejectedMail2;
 use App\Models\Reservation;
 use App\Models\Reserve;
 use Illuminate\Http\Request;
@@ -37,8 +40,8 @@ class ReserveController extends Controller
     {
         $emails = Reservation::join('arenas', 'reservations.arena_id', '=', 'arenas.id')->join('users', 'reservations.user_id', '=', 'users.id')->select('reservations.id as id', 'users.name as clientName', 'users.email as clientEmail', 'date', 'timeIn', 'timeOut', 'arenas.name as arenaName', 'arenas.email as ownerEmail')->where('reservations.id', $requestId)->get();
         foreach ($emails as $email) {
-            Mail::to($email->clientEmail)->send(new rejectedMail);
-            Mail::to($email->ownerEmail)->send(new rejectedMail);
+            Mail::to($email->clientEmail)->send(new rejectedMail2);
+            Mail::to($email->ownerEmail)->send(new rejectedMail2);
             $arenaName = $email->arenaName;
             $timeIn = $email->timeIn;
             $timeOut = $email->timeOut;
@@ -46,5 +49,35 @@ class ReserveController extends Controller
                 ->update(['status' => 'rejected']);
         }
         return redirect()->route('dashboard')->with('success', 'Reservation successfully rejected');
+    }
+    function reject2($requestId)
+    {
+        $emails = Reservation::join('arenas', 'reservations.arena_id', '=', 'arenas.id')->join('users', 'reservations.user_id', '=', 'users.id')->select('reservations.id as id', 'users.name as clientName', 'users.email as clientEmail', 'date', 'timeIn', 'timeOut', 'arenas.name as arenaName', 'arenas.email as ownerEmail')->where('reservations.id', $requestId)->get();
+        foreach ($emails as $email) {
+            Mail::to($email->clientEmail)->send(new rejectedMail2);
+            Mail::to($email->ownerEmail)->send(new rejectedMail);
+            $arenaName = $email->arenaName;
+            $timeIn = $email->timeIn;
+            $timeOut = $email->timeOut;
+            $update = Reservation::where('id', $email->id)
+                ->update(['status' => 'pending approval']);
+            $update;
+        }
+        return redirect()->route('dashboard')->with('success', 'Reservation successfully cancelled');
+    }
+    function cancel($id)
+    {
+        $emails = Reservation::join('arenas', 'reservations.arena_id', '=', 'arenas.id')->join('users', 'reservations.user_id', '=', 'users.id')->select('reservations.id as id', 'users.name as clientName', 'users.email as clientEmail', 'date', 'timeIn', 'timeOut', 'arenas.name as arenaName', 'arenas.email as ownerEmail')->where('reservations.id', $id)->get();
+        foreach ($emails as $email) {
+            Mail::to($email->clientEmail)->send(new cancelMail);
+            Mail::to($email->ownerEmail)->send(new cancelMail);
+            $arenaName = $email->arenaName;
+            $timeIn = $email->timeIn;
+            $timeOut = $email->timeOut;
+            $update = Reservation::where('id', $email->id)
+                ->update(['status' => 'rejected']);
+            $update;
+        }
+        return redirect()->route('dashboard')->with('success', 'Reservation successfully cancelled');
     }
 }

@@ -3,13 +3,14 @@
 @include('newNav')
 @section('content')
     @if (session()->has('success'))
-        <div class="bg-transparent border-0 alert alert-success alert-dismissible fade show" role="alert">
+        <div class="border-0 alert alert-success alert-dismissible fade show" role="alert">
             <strong>Success!</strong> {{ session('success') }}
             <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     @endif
+
 
 
     @auth
@@ -22,18 +23,26 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="mb-1 navbar-nav me-auto mb-lg-0">
 
-                            <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ route('showReservations') }}" class="btn btn-sm btn-dark" type="button">
 
-                                    Booking requests <span class="badge"
-                                        style="color: red; border:solid 0.5px ;">{{ ReservationController::showReservations() }}</span>
+                            <li class="nav-link">
+                                <a href="{{ route('showUnrespondedReservations') }}" class="btn btn-sm btn-dark" type="button">
+
+                                    Unhandled booking requests <span class="badge"
+                                        style="color: red; border:solid 0.5px ;">{{ ReservationController::showUnrespondedReservations() }}</span>
 
 
                                 </a>
 
                             </li>
+                            <li class="nav-link">
+                                <a href="{{ route('showRespondedReservations') }}" class="btn btn-sm btn-dark" type="button">
+
+                                    Handled booking requests
+
+                                </a>
+
                             </li>
+
                         </ul>
                     </div>
                 </div>

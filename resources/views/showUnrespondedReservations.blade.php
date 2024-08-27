@@ -1,6 +1,7 @@
 @extends('Shared.layout')
 @include('newNav')
 @section('content')
+
     @if (1 != 0)
         <table class="table table-dark">
             <thead>
@@ -11,7 +12,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">TimeIn</th>
                     <th scope="col">TimeOut</th>
-                    <th scope="col">Status</th>
+
                 </tr>
             </thead>
 
@@ -26,13 +27,13 @@
                         <td>{{ $request->date }}</td>
                         <td>{{ $request->timeIn }}</td>
                         <td>{{ $request->timeOut }}</td>
-                        <td>{{ $request->status }}</td>
+
                         @if ($request->status != 'confirmed')
                             @if ($request->status != 'rejected')
                                 <td>
                                     <form action="{{ route('acceptReservation', $request->id) }}" method="POST">
                                         @csrf
-                                        <button class=" btn btn-outline-primary btn-sm " type="submit">Confirm</button>
+                                        <button class=" btn btn-outline-primary btn-sm " type="submit">Accept</button>
                                     </form>
                                 </td>
                                 <td>

@@ -2,8 +2,16 @@
 @include('newNav')
 @section('content')
     <div class="row">
-        <div class="col-lg-4 order-2 col-10 col-md-8">
 
+        <div class="col-lg-4 order-2 col-10 col-md-8">
+            @if (session()->has('fail'))
+                <div class="border-0  alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Unsuccessful</strong> {{ session('fail') }}
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             @foreach ($arenaRes as $arena)
                 <form action="{{ route('makeReservation', $arena->id) }}" method="POST" class="my-2 form-dark mx-4 rounded "
                     style="color:bisque">
@@ -27,6 +35,7 @@
                         var today = new Date().toISOString().split('T')[0];
                         document.getElementById('date').setAttribute('min', today);
                         document.getElementById('date').setAttribute('value', today);
+                        document.getElementById('timeOut').setAttribute('min', document.getElementById('timeIn').getAttribute());
                     </script>
                     <div class="text-warning">
                         @error('date')
@@ -35,7 +44,7 @@
                     </div>
 
                     <label for="timeIn" style="color:bisque">Select your desired arrival time</label>
-                    <input type="time" required name="timeIn" class="form-control bg-dark my-1 border-0"
+                    <input type="time" id="timeIn" required name="timeIn" class="form-control bg-dark my-1 border-0"
                         style="color:bisque;">
                     <div class="text-warning">
                         @error('timeIn')
@@ -44,7 +53,7 @@
                     </div>
 
                     <label for="timeOut" style="color:bisque">Select your desired leaving time</label>
-                    <input type="time" required name="timeOut" class="form-control bg-dark my-1 border-0"
+                    <input type="time" required name="timeOut" id="timeOut" class="form-control bg-dark my-1 border-0"
                         style="color:bisque;">
                     <div class="timeOut">
                         @error('location')
