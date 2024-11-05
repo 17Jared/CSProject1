@@ -46,6 +46,38 @@ class ArenaController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Arena added successfully');
     }
+    function changeDetails()
+    {
+        $validated = request()->validate([
+            'arenaName' => 'required|max:100',
+            'location' => 'required|max:300',
+            'capacity' => 'required|max:100',
+            'charges' => 'required|max:100',
+            'email' => 'required|email|max:200',
+            'phone' => 'required',
+            'arenaId' => 'required'
+        ]);
+
+        $arenaId = $validated['arenaId'];
+        $record = Arena::find($arenaId);
+
+
+        if ($record) {
+            // Update the fields with new data
+            $record->name = $validated['arenaName'];
+            $record->location = $validated['location'];
+            $record->capacity = $validated['capacity'];
+            $record->charges = $validated['charges'];
+            $record->email = $validated['email'];
+            $record->phone = $validated['phone'];
+
+            // Save the changes to the database
+            $record->save();
+
+            return redirect()->route('dashboard')->with('success', 'Arena details updated successfully');
+        } else
+            return redirect()->route('dashboard')->with('failure', 'Error updating details');
+    }
 
 
     function bookArena($arena_id)
@@ -58,5 +90,13 @@ class ArenaController extends Controller
             'confirm' => $confirm,
             'confirm2' => $confirm2
         ]);
+    }
+    function deleteArena($id)
+    {
+        $delete = Arena::where('id', $id)->delete();
+        if ($delete) {
+            return redirect()->route('dashboard')->with('success', 'Arena deleted successfully');
+        } else
+            return redirect()->route('dashboard')->with('failure', 'Arena deletion failed  ');
     }
 }

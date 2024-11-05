@@ -29,6 +29,11 @@
                         {{ __('Register New Arena') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('manageArena') }}" :active="request() - > routeIs('')" class="nav-link">
+                        {{ __('My arenas') }}
+                    </a>
+                </li>
 
 
 
@@ -92,7 +97,8 @@
 
             <form class="d-flex" role="search" method="GET" action="{{ route('dashboard') }}">
                 @csrf
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <input class="form-control me-2" type="search" placeholder="Arena name, location..."
+                    aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

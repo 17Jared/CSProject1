@@ -27,7 +27,7 @@ class cancelMain extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Cancel Main',
+            subject: 'Reservation made has been cancelled',
         );
     }
 
@@ -37,7 +37,7 @@ class cancelMain extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'cancelMail',
         );
     }
 
